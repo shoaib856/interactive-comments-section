@@ -1,7 +1,5 @@
-/* eslint-disable react/no-unknown-property */
 import PropTypes from "prop-types";
 import EditScore from "./EditScore";
-import data from "../../data.json";
 import reply from "../assets/images/icon-reply.svg";
 import del from "../assets/images/icon-delete.svg";
 import edit from "../assets/images/icon-edit.svg";
@@ -12,6 +10,7 @@ import AddComment from "./AddComment";
 import DeleteDialogBox from "./DeleteDialogBox";
 
 const Comment = ({
+  currentUser,
   comment,
   parentID = null,
   isReply = false,
@@ -20,7 +19,6 @@ const Comment = ({
   incrementScore,
   decrementScore,
 }) => {
-  const { currentUser } = data;
   const isCurrentUser = currentUser.username === comment.user.username;
   const [isEditing, setIsEditing] = useState(false);
   const [isReplying, setIsReplying] = useState(false);
@@ -162,6 +160,7 @@ Comment.propTypes = {
   parentID: PropTypes.number,
   incrementScore: PropTypes.func,
   decrementScore: PropTypes.func,
+  currentUser: PropTypes.object,
 };
 
 export default Comment;
